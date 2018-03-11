@@ -8,7 +8,7 @@ pragma solidity ^0.4.18;
 import "./EIP20Interface.sol";
 
 
-contract EIP20 is EIP20Interface {
+contract VLXToken is EIP20Interface {
 
     uint256 constant private MAX_UINT256 = 2**256 - 1;
     mapping (address => uint256) public balances;
@@ -19,16 +19,17 @@ contract EIP20 is EIP20Interface {
     They allow one to customise the token contract & in no way influences the core functionality.
     Some wallets/interfaces might not even bother to look at this information.
     */
-    string public name;                   //fancy name: eg Simon Bucks
-    uint8 public decimals;                //How many decimals to show.
-    string public symbol;                 //An identifier: eg SBX
-
-    function EIP20(
-        uint256 _initialAmount,
+    string public name ;
+    string public symbol ;
+    uint8 public decimals ;
+    
+    function VLXToken(
         string _tokenName,
         uint8 _decimalUnits,
         string _tokenSymbol
     ) public {
+        
+        uint256 _initialAmount = 2 * (10 ** 10) * (10 ** uint256(decimals));
         balances[msg.sender] = _initialAmount;               // Give the creator all initial tokens
         totalSupply = _initialAmount;                        // Update total supply
         name = _tokenName;                                   // Set the name for display purposes
